@@ -20,20 +20,27 @@ const Curriculum = () => {
         )
     }, [])
 
-    
-
     return (
-        <article>
-            <h1>{user?.name}</h1>
-            <hr />
-            <DocInformation userInformation={user} />
-            <div id="secao-dados">
-                <ProfessionalExperienceView professionalExperiences={user?.professionalExperiences} />
-                <AcademicEducationView academicEducations={user?.academicEducations} />
-            </div>
-            <KnowledgesView knowledges={user?.knowledges} />
-            <LanguageProficiencyView languageProficiencies={user?.languageProficiencies} />
-        </article>
+        <>
+            {
+                user &&
+                <article>
+                    <h1>{user?.name}</h1>
+                    <hr />
+                    <DocInformation userInformation={user} />
+                    <div id="secao-dados">
+                        <ProfessionalExperienceView professionalExperiences={user?.professionalExperiences} />
+                        <AcademicEducationView academicEducations={user?.academicEducations} />
+                    </div>
+                    <KnowledgesView knowledges={user?.knowledges} />
+                    <LanguageProficiencyView languageProficiencies={user?.languageProficiencies} />
+                </article>
+                ||
+                <div className='erro'>
+                    User Not Found
+                </div>
+            }
+        </>
     )
 }
 export default Curriculum
